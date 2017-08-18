@@ -21,6 +21,8 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+
+    <?= $this->render('@app/views/partials/header.php', []) ?>
     <?php $this->head() ?>
 </head>
 <body>
