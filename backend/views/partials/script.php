@@ -3,9 +3,9 @@
 use yii\helpers\Url;
 ?>
 <!-- BEGIN CORE PLUGINS -->
-<script src="<?= Url::base(); ?>/theme/js/jquery.min.js" type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.0.0/jquery-migrate.min.js"></script>
-<script src="<?= Url::base(); ?>/theme/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+
+
+<!-- <script src="<?= Url::base(); ?>/theme/js/jquery-3.1.1.min.js" type="text/javascript"></script> -->
 <script src="<?= Url::base(); ?>/theme/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="<?= Url::base(); ?>/theme/js/js.cookie.min.js" type="text/javascript"></script>
 <script src="<?= Url::base(); ?>/theme/js/jquery.slimscroll.min.js" type="text/javascript"></script>
