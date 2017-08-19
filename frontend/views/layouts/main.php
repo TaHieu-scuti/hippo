@@ -28,10 +28,10 @@ AppAsset::register($this);
     <div class="product-sell-area section-padding">
         <div class="container">
             <div class="row">
+                <?= $this->render('@app/views/layouts/nav.php', []) ?>
                 <div class="col-md-9">
                     <?= $content ?>
-                </div>
-                <?= $this->render('@app/views/layouts/nav.php', []) ?>
+                </div>                
             </div>
         </div>
     </div>
