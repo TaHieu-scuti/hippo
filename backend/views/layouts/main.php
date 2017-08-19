@@ -25,58 +25,156 @@ AppAsset::register($this);
     <?= $this->render('@app/views/partials/header.php', []) ?>
     <?php $this->head() ?>
 </head>
-<body>
-<?php $this->beginBody() ?>
+<?= $this->beginBody() ?>
+    <body class="page-header-fixed page-sidebar-closed-hide-logo">
+        <!-- BEGIN CONTAINER -->
+        <div class="wrapper">
+            <!-- BEGIN HEADER -->
+            <?= $this->render('@app/views/partials/header-top.php', []) ?>
+            <!-- END HEADER -->
+            <div class="container-fluid">
+                <div class="page-content">
+                    <!-- BEGIN BREADCRUMBS -->
+                    <div class="breadcrumbs">
+                        <h1>Trang chủ</h1>
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <a href="#">Trang chủ</a>
+                            </li>
+                        </ol>
+                        <!-- Sidebar Toggle Button -->
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".page-sidebar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="toggle-icon">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </span>
+                        </button>
+                        <!-- Sidebar Toggle Button -->
+                    </div>
+                    <!-- END BREADCRUMBS -->
+                    <!-- BEGIN SIDEBAR CONTENT LAYOUT -->
+                    <div class="page-content-container">
+                        <div class="page-content-row">
+                            <div class="page-content-col">
+                                <div class="row">
+                                    <div class="col-lg-12 col-xs-12 col-sm-12">
+                                        <div class="portlet light portlet-fit bordered">
+                                            <?= $content?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END SIDEBAR CONTENT LAYOUT -->
 
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => 'My Company',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
+                    <div class="modal fade bs-modal-lg" id="portlet-config" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h4 class="modal-title">Phản hồi bài số 1</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-12 col-xs-12">
+                                            <div class="portlet box blue ">
+                                                <div class="portlet-title">
+                                                    <div class="caption">
+                                                        <i class="fa fa-gift"></i>Thông tin</div>
+                                                    <div class="tools">
+                                                        <a href="javascript:;" class="collapse"> </a>
+                                                    </div>
+                                                </div>
+                                                <div class="portlet-body form">
+                                                    <!-- BEGIN FORM-->
+                                                    <form action="#" class="form-horizontal form-bordered">
+                                                        <div class="form-body">
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-3">Tiêu đề</label>
+                                                                <div class="col-md-9">
+                                                                    <input type="text" placeholder="Tiêu đề phản hồi" class="form-control" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-3">Người nhận</label>
+                                                                <div class="col-md-9">
+                                                                    <select class="form-control">
+                                                                        <option value="">Tất cả quản lý</option>
+                                                                        <option value="">Quản lý 1</option>
+                                                                        <option value="">Quản lý 2</option>
+                                                                    </select>
+                                                                    <span class="help-block"> Chọn người xử lý phản hồi. </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-3">Nội dung
+                                                                    <span class="required"> * </span>
+                                                                </label>
+                                                                <div class="col-md-9">
+                                                                    <textarea class="wysihtml5 form-control" rows="6" name="editor1" data-error-container="#editor1_error"></textarea>
+                                                                    <div id="editor1_error"> </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-actions">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="row">
+                                                                        <div class="col-md-offset-3 col-md-9">
+                                                                            <button type="submit" class="btn green">
+                                                                                <i class="fa fa-check"></i> Gửi đi</button>
+                                                                            <button type="button" class="btn default">Xoá</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    <!-- END FORM-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
+                                    <!-- <button type="button" class="btn green">Lưu thay đổi</button> -->
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
-</div>
+                </div>
+                <!-- BEGIN FOOTER -->
+                <p class="copyright"> 2017 &copy; Jtrain Study By
+                    <a target="_blank" href="http://mhsoft.vn">MHsoft</a>
+                </p>
+                <a href="#index" class="go2top">
+                    <i class="icon-arrow-up"></i>
+                </a>
+                <!-- END FOOTER -->
+            </div>
+        </div>
+        <!-- END CONTAINER -->
+        <!-- BEGIN QUICK NAV -->
+        @include('admin.layouts.partials.quick-nav')
 
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <div class="quick-nav-overlay"></div>
+        <!-- END QUICK NAV -->
+        <!--[if lt IE 9]>
+            <script src="../assets/global/plugins/respond.min.js"></script>
+            <script src="../assets/global/plugins/excanvas.min.js"></script>
+            <script src="../assets/global/plugins/ie8.fix.min.js"></script>
+        <![endif]--></body>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
+<?= $this->endBody() ?>
+<?= $this->render('@app/views/partials/script.php', []) ?>
 
-<?php $this->endBody() ?>
-</body>
 </html>
 <?php $this->endPage() ?>
