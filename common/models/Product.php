@@ -36,10 +36,12 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['company_id', 'user_id', 'name', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['company_id', 'user_id', 'name', 'status', 'created_at', 'updated_at', 'category_id'], 'integer'],
+            [['company_id', 'user_id'], 'required', 'message' => '{attribute} không được để trống'],
             [['description'], 'string'],
             [['deleted_at'], 'safe'],
             [['title', 'price', 'product_cnt'], 'string', 'max' => 255],
+            [['public_image'], 'file', 'skipOnEmpty' => false]
         ];
     }
 
@@ -50,17 +52,29 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'company_id' => 'Company ID',
+            'company_id' => 'Nhà cung cấp',
             'user_id' => 'User ID',
-            'name' => 'Name',
-            'title' => 'Title',
-            'description' => 'Description',
-            'price' => 'Price',
-            'product_cnt' => 'Total product count',
-            'status' => '0 : show, 1 : hide ',
+            'name' => 'Tên sản phẩm',
+            'category_id' => 'Loại sản phẩm',
+            'title' => 'Tiêu đề',
+            'description' => 'Mô tả',
+            'price' => 'Giá',
+            'product_cnt' => 'Số lượng',
+            'status' => 'Trạng thái',
+            'public_image' => 'Ảnh hiển thị',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'deleted_at' => 'Deleted At',
         ];
+    }
+
+    public function upload()
+    {
+        if ($this->validate()) {
+            $this->public_image->saveAs('uploads/' . $this->public_image->baseName . '.' . $this->public_image->extension);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
