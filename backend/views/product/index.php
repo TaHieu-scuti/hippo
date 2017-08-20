@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\ProductSearch */
@@ -26,6 +27,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'company_id',
+            [
+                'attribute' => 'public_image',
+                'value' => function($model) {
+                    $url = Url::base().'/uploads/'.$model->public_image;
+                    $html = '';
+                    $html .= '<img src="'.$url.'" with="50px" height="50px" alt="">';
+                    return $html;
+                },
+                'format' =>'raw'
+            ],
             'user_id',
             'name',
             'title',

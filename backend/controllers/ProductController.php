@@ -104,8 +104,10 @@ class ProductController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        $product = $this->findModel($id);
+        $product->status = 2;
+        $product->deleted_at = date('Y-m-d');
+        $product->save(false);
         return $this->redirect(['index']);
     }
 
