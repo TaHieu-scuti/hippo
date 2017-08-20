@@ -58,5 +58,12 @@ class Category extends \yii\db\ActiveRecord
     public static function getCategory(){
         $categories = self::find()->andWhere(['status' => 0])->andWhere(['deleted_at' => null])->all();
         return ArrayHelper::map($categories, 'id', 'name');
+    }public function getTextStatus(){
+        $array = Yii::$app->params['status'];
+        foreach ($array as $key => $value) {
+            if ($this->status === $key) {
+                return $value;
+            }
+        }
     }
 }
