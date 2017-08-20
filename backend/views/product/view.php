@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-
+use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model common\models\Product */
 
@@ -29,18 +29,46 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'company_id',
-            'user_id',
+            [
+                'attribute' => 'company_id',
+                'value' => function($model) {
+                    return $model->company != NULL ?  $model->company->name : '';
+
+                },
+            ],
+            [
+                'attribute' => 'public_image',
+                'value' => function($model) {
+                    $url = Url::base().'/uploads/'.$model->public_image;
+                    $html = '';
+                    $html .= '<img src="'.$url.'" with="50px" height="50px" alt="">';
+                    return $html;
+                },
+                'format' =>'raw'
+            ],
+            [
+                'attribute' => 'user_id',
+                'value' => function($model) {
+                    return $model->user != NULL ?  $model->user->name : '';
+
+                },
+            ],
             'name',
             'title',
             'description:ntext',
             'price',
-            'product_cnt',
-            'status',
-            'created_at',
-            'updated_at',
-            'deleted_at',
-            'category_id',
+            // 'product_cnt',
+            // 'status',
+            // 'created_at',
+            // 'updated_at',
+            // 'deleted_at',
+            [
+                'attribute' => 'category_id',
+                'value' => function($model) {
+                    return $model->category != NULL ?  $model->category->name : '';
+
+                },
+            ],
         ],
     ]) ?>
 

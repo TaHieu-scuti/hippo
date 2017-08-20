@@ -26,7 +26,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'company_id',
+            [
+                'attribute' => 'company_id',
+                'value' => function($model) {
+                    return $model->company != NULL ?  $model->company->name : '';
+
+                },
+            ],
             [
                 'attribute' => 'public_image',
                 'value' => function($model) {
@@ -37,17 +43,29 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
                 'format' =>'raw'
             ],
-            'user_id',
+            [
+                'attribute' => 'user_id',
+                'value' => function($model) {
+                    return $model->user != NULL ?  $model->user->name : '';
+
+                },
+            ],
             'name',
             'title',
-            // 'description:ntext',
-            // 'price',
+            'description:ntext',
+            'price',
             // 'product_cnt',
             // 'status',
             // 'created_at',
             // 'updated_at',
             // 'deleted_at',
-            // 'category_id',
+            [
+                'attribute' => 'category_id',
+                'value' => function($model) {
+                    return $model->category != NULL ?  $model->category->name : '';
+
+                },
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
