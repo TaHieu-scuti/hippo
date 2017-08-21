@@ -1,3 +1,7 @@
+<?php 
+use yii\helpers\Url;
+?>
+
 <header class="page-header">
     <nav class="navbar mega-menu" role="navigation">
         <div class="container-fluid">
@@ -193,7 +197,7 @@
                                         <i class="icon-home"></i> Dashboard </a>
                                 </li>
                                 <li class="dropdown dropdown-fw  ">
-                                    <a href="product" class="text-uppercase">
+                                    <a href="<?= Url::to('product') ?>" class="text-uppercase">
                                         <i class="icon-puzzle"></i> Sản phẩm </a>
                                     <ul class="dropdown-menu dropdown-menu-fw">
                                         <li class="dropdown more-dropdown-sub">

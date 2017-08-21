@@ -36,11 +36,11 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['company_id', 'user_id', 'name', 'status', 'created_at', 'updated_at', 'category_id'], 'integer'],
+            [['company_id', 'user_id', 'status', 'created_at', 'updated_at', 'category_id'], 'integer'],
             [['company_id', 'user_id'], 'required', 'message' => '{attribute} không được để trống'],
             [['description'], 'string'],
             [['deleted_at'], 'safe'],
-            [['title', 'price', 'product_cnt'], 'string', 'max' => 255],
+            [['title', 'price', 'product_cnt', 'name'], 'string', 'max' => 255],
             [['public_image'], 'file', 'skipOnEmpty' => false]
         ];
     }
@@ -76,5 +76,10 @@ class Product extends \yii\db\ActiveRecord
         } else {
             return false;
         }
+    }
+
+    public function getCategory()
+    {
+        return $this->hasOne(Category::className(), ['id' => 'category_id']);
     }
 }

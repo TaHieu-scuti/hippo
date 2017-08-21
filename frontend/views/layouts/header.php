@@ -56,7 +56,6 @@ $model = new LoginForm;
 									            
 											</div>
 											<div class="form-wrapper-footer">
-												<span class="required">* Required</span>
 												<div class="form-group">
 								                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
 								                </div>
@@ -90,6 +89,11 @@ $model = new LoginForm;
 								            <?= Html::endForm()?>							            	
 							            </li>
 									</ul>
+								</li>
+								<li class="menu-item cart-list ">
+									<a href="#">
+										<i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng 
+									</a>
 								</li>
 							<?php endif ?>
 						</ul>
@@ -576,29 +580,13 @@ $model = new LoginForm;
 			<div class="slider-container">
 				<!-- Slider Image -->
 				<div id="mainSlider" class="nivoSlider slider-image">
-					<img src="<?= Url::base(); ?>/theme/img/slider/slider-8-1.jpg" alt="main slider" title="#htmlcaption1"/>
+					<img src="<?= Url::base(); ?>/theme/img/slider/mac.png" alt="main slider" title="#htmlcaption1"/>
 					<img src="<?= Url::base(); ?>/theme/img/slider/slider-8-2.jpg" alt="main slider" title="#htmlcaption2"/>
 					<img src="<?= Url::base(); ?>/theme/img/slider/slider-8-3.jpg" alt="main slider" title="#htmlcaption3"/>
 				</div>
 				<!-- Slider Caption 1 -->
 				<div id="htmlcaption1" class="nivo-html-caption slider-caption-1">
 					<div class="slider-progress"></div>
-					<div class="slide-text">
-						<div class="middle-text">
-							<div class="cap-dec-black wow bounceInDown" data-wow-duration="0.9s" data-wow-delay="0s">
-								<p>Democracy Partner</p>
-							</div>
-							<div class="fashion-title-black wow bounceInRight" data-wow-duration="1.2s" data-wow-delay="0.2s">
-								<h1>Fashionn Women</h1>
-							</div>
-							<div class="cap-details wow bounceInRight" data-wow-duration="1.4s" data-wow-delay="0.2s">
-								<p>Bill and Melinda Gates Rosa Parks collaborative maintain campaign social impact</p>
-							</div>
-							<div class="cap-shop-black wow bounceInUp" data-wow-duration="1.6s" data-wow-delay=".5s">
-								<a href="#">Shop now </a>
-							</div>
-						</div>
-					</div>
 				</div>
 				<!-- Slider Caption 2 -->
 				<div id="htmlcaption2" class="nivo-html-caption slider-caption-2">
