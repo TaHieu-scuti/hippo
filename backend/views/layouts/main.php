@@ -174,7 +174,7 @@ AppAsset::register($this);
         <![endif]--></body>
 
 <?= $this->endBody() ?>
-<?= $this->render('@app/views/partials/script.php', []) ?>
+    <?= $this->render('@app/views/partials/script.php', []) ?>
 
 </html>
 <?php $this->endPage() ?>

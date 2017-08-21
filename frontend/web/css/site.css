@@ -118,3 +118,7 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.product-thumbnail-wrappe{
+    height: 240px!important;
+}

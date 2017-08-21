@@ -1,3 +1,7 @@
+<?php 
+use yii\helpers\Url;
+?>
+
 <header class="page-header">
     <nav class="navbar mega-menu" role="navigation">
         <div class="container-fluid">
@@ -17,6 +21,10 @@
                     <img src="" alt="Logo"> </a>
                 <!-- END LOGO -->
                 <!-- BEGIN TOPBAR ACTIONS -->
+                <?php
+                    if(!Yii::$app->user->isGuest){
+                      
+                ?>
                 <div class="topbar-actions">
                     <!-- BEGIN GROUP NOTIFICATION -->
                     <div class="btn-group-notification btn-group" id="header_notification_bar">
@@ -135,8 +143,20 @@
                             </li>
                         </ul>
                     </div>
+                <?php 
+                    }else{
+                        
+                ?>
+                    <a href="#" title="">Đăng nhập</a>
+                <?php
+                    }
+                ?>
                     <!-- END GROUP INFORMATION -->
                     <!-- BEGIN USER PROFILE -->
+                <?php
+                    if(!Yii::$app->user->isGuest){
+                      
+                ?>
                     <div class="btn-group-img btn-group">
                         <button type="button" class="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                              <span></span>
@@ -152,6 +172,9 @@
                             </li>
                         </ul>
                     </div>
+                <?php 
+                    }
+                ?>
                     <!-- END USER PROFILE -->
                     <!-- BEGIN QUICK SIDEBAR TOGGLER -->
                     <!-- <button type="button" class="quick-sidebar-toggler md-skip" data-toggle="collapse">
@@ -163,6 +186,10 @@
                 <!-- END TOPBAR ACTIONS -->
             </div>
                         <!-- BEGIN HEADER MENU -->
+                    <?php
+                        if(!Yii::$app->user->isGuest){
+                          
+                    ?>
                         <div class="nav-collapse collapse navbar-collapse navbar-responsive-collapse">
                             <ul class="nav navbar-nav">
                                 <li class="dropdown dropdown-fw  active open selected">
@@ -170,44 +197,21 @@
                                         <i class="icon-home"></i> Dashboard </a>
                                 </li>
                                 <li class="dropdown dropdown-fw  ">
-                                    <a href="javascript:;" class="text-uppercase">
-                                        <i class="icon-puzzle"></i> Người dùng </a>
+                                    <a href="<?= Url::to('product') ?>" class="text-uppercase">
+                                        <i class="icon-puzzle"></i> Sản phẩm </a>
                                     <ul class="dropdown-menu dropdown-menu-fw">
                                         <li class="dropdown more-dropdown-sub">
                                             <a href="">
                                                 <i class="icon-diamond"></i> Danh sách người dùng 
                                             </a>
                                         </li>
-                                        <li class="dropdown more-dropdown-sub">
-                                            <a href="">
-                                                <i class="icon-puzzle"></i> Chức vụ
-                                            </a>
-                                        </li>
-                                        <li class="dropdown more-dropdown-sub">
-                                            <a href="">
-                                                <i class="icon-settings"></i> Quyền
-                                            </a>
-                                        </li>
                                     </ul>
-                                </li>
-                                <li class="dropdown dropdown-fw  ">
-                                    <a href="" class="text-uppercase">
-                                        <i class="icon-briefcase"></i> Phòng ban </a>
-                                </li>
-                                <li class="dropdown dropdown-fw  ">
-                                    <a href="javascript:;" class="text-uppercase">
-                                        <i class="icon-layers"></i> Nhóm </a>
-                                </li>
-                                <li class="dropdown dropdown-fw  ">
-                                    <a href="javascript:;" class="text-uppercase">
-                                        <i class="icon-layers"></i> Dự án </a>
-                                </li>
-                                <li class="dropdown dropdown-fw ">
-                                    <a href="javascript:;" class="text-uppercase"> Workflows </a>
-                        
                                 </li>
                             </ul>
                         </div>
+                    <?php
+                        }
+                    ?>
                         <!-- END HEADER MENU -->
         </div>
         <!--/container-->

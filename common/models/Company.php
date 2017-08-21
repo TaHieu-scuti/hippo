@@ -3,7 +3,7 @@
 namespace common\models;
 
 use Yii;
-
+use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "{{%companies}}".
  *
@@ -53,5 +53,10 @@ class Company extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
             'deleted_at' => 'Deleted At',
         ];
+    }
+
+    public static function getCompanies(){
+        $companies = self::find()->andWhere(['status' => 0])->andWhere(['deleted_at' => null])->all();
+        return ArrayHelper::map($companies, 'id', 'name');
     }
 }
