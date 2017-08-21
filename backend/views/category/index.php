@@ -27,11 +27,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'description',
-            'status',
-            'created_at',
-            // 'updated_at',
-            // 'deleted_at',
-
+            [
+                'attribute' => 'status',
+                'value' => function($model) {
+                    return $model->getTextStatus();
+                }
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

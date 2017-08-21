@@ -22,10 +22,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'tableOptions' => ['class' => 'table table-striped table-hover'],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             [
                 'attribute' => 'company_id',
                 'value' => function($model) {
@@ -54,11 +53,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'description:ntext',
             'price',
-            // 'product_cnt',
-            // 'status',
-            // 'created_at',
-            // 'updated_at',
-            // 'deleted_at',
             [
                 'attribute' => 'category_id',
                 'value' => function($model) {
