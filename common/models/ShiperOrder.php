@@ -43,9 +43,9 @@ class ShiperOrder extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'order_id' => 'Order ID',
-            'user_id' => 'User ID',
-            'status' => '0 : show, 1 : hide ',
+            'order_id' => 'Mã Order',
+            'user_id' => 'Người tạo',
+            'status' => 'Trạng thái',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'deleted_at' => 'Deleted At',
