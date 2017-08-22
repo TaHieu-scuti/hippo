@@ -6292,3 +6292,15 @@ h3.widget-title-modal {
   background: #ED3C13 none repeat scroll 0 0;
 }
 
+.category_product {
+      width: 23%;
+    float: left;
+    margin-right: 10px;
+}
+
+#img_view{
+  width: 100%;
+}
+#pay_status{
+  
+}
