@@ -32,7 +32,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'email:email',
             'address',
-            'status',
+            [
+                'attribute' => 'status',
+                'value' => function($model) {
+                    return $model->getTextStatus();
+                }
+            ],
             'created_at',
             'updated_at',
             'deleted_at',

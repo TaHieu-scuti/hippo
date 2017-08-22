@@ -28,8 +28,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'email:email',
             'address',
-            'status',
-            // 'created_at',
+            [
+                'attribute' => 'status',
+                'value' => function($model) {
+                    return $model->status == 0 ? 'Active' : 'Unactive';
+
+                },
+            ],            // 'created_at',
             // 'updated_at',
             // 'deleted_at',
 

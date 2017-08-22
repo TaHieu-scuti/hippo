@@ -86,8 +86,14 @@ class ProductController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $oldImage = $model->public_image;
+        if ($model->load(Yii::$app->request->post())) {
+            $file = UploadedFile::getInstance($model, 'public_image');
+            if ($file == NULL) {
+               $model->public_image = $oldImage;
+            }
+            $model->save();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -104,8 +110,10 @@ class ProductController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        $product = $this->findModel($id);
+        $product->status = 2;
+        $product->deleted_at = date('Y-m-d');
+        $product->save(false);
         return $this->redirect(['index']);
     }
 
@@ -123,5 +131,19 @@ class ProductController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+    /**
+     * Finds and view detail
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Product the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionDetail($id)
+    {
+        $model = Product::findOne($id);
+            return $this->render('detail_product', [
+                'model' => $model,
+            ]);
     }
 }

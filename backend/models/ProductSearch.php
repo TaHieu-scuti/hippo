@@ -41,7 +41,7 @@ class ProductSearch extends Product
      */
     public function search($params)
     {
-        $query = Product::find();
+        $query = Product::find()->andWhere(['<>', 'status', 2])->andWhere(['deleted_at' => NULL]);
 
         // add conditions that should always apply here
 
@@ -61,7 +61,6 @@ class ProductSearch extends Product
         $query->andFilterWhere([
             'id' => $this->id,
             'company_id' => $this->company_id,
-            'user_id' => $this->user_id,
             'name' => $this->name,
             'status' => $this->status,
             'created_at' => $this->created_at,

@@ -3,7 +3,6 @@
 namespace common\models;
 
 use Yii;
-
 /**
  * This is the model class for table "{{%products}}".
  *
@@ -36,12 +35,12 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['company_id', 'user_id', 'status', 'created_at', 'updated_at', 'category_id'], 'integer'],
+            [['company_id', 'user_id', 'status','product_cnt', 'created_at', 'updated_at', 'category_id'], 'integer'],
             [['company_id', 'user_id'], 'required', 'message' => '{attribute} không được để trống'],
-            [['description'], 'string'],
+            [['description', 'name', 'content'], 'string'],
             [['deleted_at'], 'safe'],
-            [['title', 'price', 'product_cnt', 'name'], 'string', 'max' => 255],
-            [['public_image'], 'file', 'skipOnEmpty' => false]
+            [['title', 'price'], 'string', 'max' => 255],
+            [['public_image'], 'file', 'skipOnEmpty' => true]
         ];
     }
 
@@ -76,6 +75,16 @@ class Product extends \yii\db\ActiveRecord
         } else {
             return false;
         }
+    }
+
+    public function getCompany()
+    {
+        return $this->hasOne(Company::className(), ['id' => 'company_id']);
+    }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
     public function getCategory()
