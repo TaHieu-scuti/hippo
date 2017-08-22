@@ -48,15 +48,21 @@ class Company extends \yii\db\ActiveRecord
             'name' => 'Name',
             'email' => 'Email',
             'address' => 'Address',
-            'status' => '0 : show, 1 : hide ',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'deleted_at' => 'Deleted At',
+            'status' => 'Trạng thái ',
         ];
     }
 
     public static function getCompanies(){
         $companies = self::find()->andWhere(['status' => 0])->andWhere(['deleted_at' => null])->all();
         return ArrayHelper::map($companies, 'id', 'name');
+    }
+
+    public function getTextStatus(){
+        $array = Yii::$app->params['status'];
+        foreach ($array as $key => $value) {
+            if ($this->status === $key) {
+                return $value;
+            }
+        }
     }
 }

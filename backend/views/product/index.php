@@ -51,7 +51,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'name',
             'title',
-            'description:ntext',
             'price',
             [
                 'attribute' => 'category_id',
@@ -61,7 +60,45 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {update} {detail} {delete} ',
+                'contentOptions' => [
+                    'style' => 'text-align: right',
+                ],
+                'buttons' => [
+                    'view' => function ($url) {
+                        return Html::a('<i class="fa fa-eye fa-lg"></i>', $url, [
+                            'title' => Yii::t('yii', 'View'),
+                            'data-pjax' => '0',
+                            'class' => 'btn btn-primary btn-xs',
+                        ]);
+                    },
+                    'update' => function ($url) {
+                        return Html::a('<i class="fa fa-pencil fa-lg"></i>', $url, [
+                            'title' => Yii::t('yii', 'Update'),
+                            'data-pjax' => '0',
+                            'class' => 'btn btn-info btn-xs',
+                        ]);
+                    },
+                    'detail' => function ($url) {
+                        return Html::a('<i class="fa fa-info fa-lg"></i>', $url, [
+                            'title' => Yii::t('yii', 'Detail'),
+                            'data-pjax' => '0',
+                            'class' => 'btn btn-info btn-xs',
+                        ]);
+                    },
+                    'delete' => function ($url) {
+                        return Html::a('<i class="fa fa-times fa-lg"></i>', $url, [
+                            'title' => Yii::t('yii', 'Delete'),
+                            'data-confirm' => Yii::t('yii', '削除します。よろしいですか？'),
+                            'data-method' => 'post',
+                            'data-pjax' => '0',
+                            'class' => 'btn btn-danger btn-xs',
+                        ]);
+                    },
+                ],
+            ],
         ],
     ]); ?>
 </div>

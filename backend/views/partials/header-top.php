@@ -197,15 +197,16 @@ use yii\helpers\Url;
                                         <i class="icon-home"></i> Dashboard </a>
                                 </li>
                                 <li class="dropdown dropdown-fw  ">
-                                    <a href="<?= Url::to('product') ?>" class="text-uppercase">
+                                    <a href="<?= Url::to('/backend/web/product') ?>" class="text-uppercase">
                                         <i class="icon-puzzle"></i> Sản phẩm </a>
-                                    <ul class="dropdown-menu dropdown-menu-fw">
-                                        <li class="dropdown more-dropdown-sub">
-                                            <a href="">
-                                                <i class="icon-diamond"></i> Danh sách người dùng 
-                                            </a>
-                                        </li>
-                                    </ul>
+                                </li>
+                                <li class="dropdown dropdown-fw  ">
+                                    <a href="<?= Url::to('/backend/web/company') ?>" class="text-uppercase">
+                                        <i class="icon-puzzle"></i> Nhà cung cấp </a>
+                                </li>
+                                <li class="dropdown dropdown-fw  ">
+                                    <a href="<?= Url::to('/backend/web/user') ?>" class="text-uppercase">
+                                        <i class="icon-puzzle"></i> User </a>
                                 </li>
                             </ul>
                         </div>
