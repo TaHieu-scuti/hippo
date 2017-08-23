@@ -36,6 +36,7 @@ AppAsset::register($this);
                 <div class="page-content">
                     <!-- BEGIN BREADCRUMBS -->
               
+              
                     <!-- END BREADCRUMBS -->
                     <!-- BEGIN SIDEBAR CONTENT LAYOUT -->
                     <div class="page-content-container">
