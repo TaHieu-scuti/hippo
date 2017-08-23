@@ -35,24 +35,7 @@ AppAsset::register($this);
             <div class="container-fluid">
                 <div class="page-content">
                     <!-- BEGIN BREADCRUMBS -->
-                    <div class="breadcrumbs">
-                        <h1>Trang chủ</h1>
-                        <ol class="breadcrumb">
-                            <li class="active">
-                                <a href="#">Trang chủ</a>
-                            </li>
-                        </ol>
-                        <!-- Sidebar Toggle Button -->
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".page-sidebar">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="toggle-icon">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </span>
-                        </button>
-                        <!-- Sidebar Toggle Button -->
-                    </div>
+              
                     <!-- END BREADCRUMBS -->
                     <!-- BEGIN SIDEBAR CONTENT LAYOUT -->
                     <div class="page-content-container">
