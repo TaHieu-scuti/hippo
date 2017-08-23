@@ -19,19 +19,18 @@ $this->title = 'My Yii Application';
                         <div class="product-thumbnail-wrapper">
                             <a href="#" class="border-none">
                                 <div class="product-image">
-                                    <img alt="" src="<?= Url::base(); ?>../backend/web/uploads/<?= $product->public_image ?>" width="170px" height="200px">
+                                    <img alt="" id="img_<?= $product->id ?>" src="<?= Url::base(); ?>../backend/web/uploads/<?= $product->public_image ?>" width="170px" height="200px">
                                 </div>
                             </a>
                             <div class="product-button-list">
                                 <div class="add-to-cart-list">
-                                    <a class="btn-product btn-cart" href="#">
-                                        <i aria-hidden="true" class="fa fa-shopping-cart"></i>
+                                    <a class="btn-product btn-cart " href="javascript:void(0)">
+                                        <i aria-hidden="true" class="fa fa-shopping-cart Addcart" data-id="<?= $product->id ?>"></i>
                                     </a>
                                 </div>
                                 <div class="product-button-group">
-                                    <a class="add-to-wishlist" href="#"><i aria-hidden="true" class="fa fa-heart"></i></a>
-                                    <a class="add-to-compare" href="#"><i aria-hidden="true" class="fa fa-refresh"></i></a>
-                                    <a href="#" title="Quick view" data-toggle="modal" class="btn-quickview" data-target="#productModal"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                    <a class="add-to-compare" href="<?= Url::to('/product/detail?id='.$product->id ) ?>"><i class="fa fa-info" aria-hidden="true" title="Thông tin chi tiết sản phẩm"></i></a>
+                                    <a href="#" title="Quick view" data-toggle="modal" data-content="<?= $product->description ?>" data-id="<?= $product->id ?>" class="btn-quickview view_product" data-target="#productModal"><i class="fa fa-search" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -43,11 +42,11 @@ $this->title = 'My Yii Application';
                                 <i class="fa fa-star-o"></i>
                                 <i class="fa fa-star-o"></i>
                             </div>
-                            <a class="heading-title" href="#"><?= $product->name ?></a>
+                            <a class="heading-title" id="title_<?= $product->id ?>" href="#"><?= strlen($product->name) > 40 ? substr($product->name, 0, 40).'...' :  $product->name?></a>
                             <span class="price">
-                                <span class="amount"><?= number_format($product->price) ?> VND</span>
+                                <span id="price_<?= $product->id ?>" class="amount"><?= number_format($product->price) ?> VND</span>
                             </span>
-                            <button type="button" class="btn btn-danger" data-id="<?= $product->id ?>"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Thêm Vào giỏ Hàng</button>
+                            <button type="button" class="btn btn-danger Addcart" data-id="<?= $product->id ?>"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Thêm Vào giỏ Hàng</button>
                         </div>
                     </div>
                 </div>
@@ -56,3 +55,5 @@ $this->title = 'My Yii Application';
         </div>
     </div>
 <?php endforeach ?>
+
+

@@ -9,7 +9,7 @@ use yii\helpers\Url;
 AppAsset::register($this);
 ?>
 
-<script src="<?= Url::base(); ?>/theme/js/jquery-1.12.0.min.js"></script>
+
 <!-- bootstrap js -->
 <script src="<?= Url::base(); ?>/theme/js/bootstrap.min.js"></script>
 <!-- bootstrap js -->

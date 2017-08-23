@@ -20,9 +20,22 @@ use common\models\Category;
 
     <?= $form->field($model, 'category_id')->dropDownList(Category::getCategory()) ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'title')->textInput(['maxlength' => true,'id' => 'title']) ?>
 
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'description')->textarea(['rows' => '6','id' => 'description']) ?>
+
+    <?php echo froala\froalaeditor\FroalaEditorWidget::widget([
+        'model' => $model,
+        'attribute' => 'content',
+        'options'=>[// html attributes
+            'id'=>'content'
+        ],
+        'clientOptions'=>[
+            'toolbarInline'=> false,
+            'theme' =>'royal',//optional: dark, red, gray, royal
+            'language'=>'en_gb' // optional: ar, bs, cs, da, de, en_ca, en_gb, en_us ...
+        ]
+    ]);; ?>
 
     <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
 
@@ -37,5 +50,6 @@ use common\models\Category;
     </div>
 
     <?php ActiveForm::end(); ?>
-
+   
 </div>
+

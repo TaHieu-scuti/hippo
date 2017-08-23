@@ -3,73 +3,74 @@
 /* @var $this yii\web\View */
 use yii\helpers\Url;
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 /*urc="<?= Url::base(); ?>/theme/img/product/7.jpg">*/
 $this->title = 'Detail';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="row">
-	<div class="col-md-6" style=" height: 300px">
-		<img src="<?= Url::base(); ?>../backend/web/uploads/Air MQD32.jpg" width="250px" height="300px">
-	</div>
-	<div class="col-md-6 " style=" height: 300px">
-		<div class="product-details-content">
-			<h1>Air MQD32</h1>
-            <div class="ratting">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
+	<div class="modal-content">
+	    <div class="modal-header" style="background: aliceblue; color:grey">
+	    	<h3>Thông Tin Chi tiết sản phẩm</h3>
+	    </div>
+	    <div class="modal-body">
+	        <div class="modal-product">
+	            <div class="product-images">
+	                <div class="main-image images">
+	                    <img alt="" id="img_view" src="<?= Url::base(); ?>../backend/web/uploads/<?= $product->public_image ?>">
+	                </div>
+	            </div>
+	            <div class="product-info">
+	                <h1 id="title_view" style="color:blue"><?= $product->name ?></h1>
+	                <div class="price-box">
+	                    <p class="price"><span class="special-price"><span class="amount" id="price_view" style="color:red"><?= number_format($product->price) ?> VND</span></span></p>
+	                </div>
+	                <div class="price-box">
+	                	<font style="font-weight: bold;">Thuế VAT</font> : <span style="color:red">Giá Trên chưa bao gồm thuế VAT</span>
+	                </div>
+	                <div class="price-box">
+	                	<font style="font-weight: bold;">Bảo Hành</font> : <span>12 Tháng</span>
+	                </div>
+	                <div class="price-box">
+	                	<font style="font-weight: bold;">Thời gian vận chuyển</font> : <span>7 ngày sau khi đặt hàng</span>
+	                </div>
+	                
+	                <div class="quick-add-to-cart">
+		                <div class="price-box">
+							<font style="font-weight: bold;">Hình thức Thanh Toán</font>  : Thanh Toán trức tuyến
 
-            </div>
-            <a class="heading-title" href="#">Floral gold collar chunky &ndash; s5</a>
-            <span class="price">
-                <span class="amount">$18-20</span>
-                -
-                <span class="amount">$19.20</span>
-            </span>
-            
-           	<input type="number" value="1" min="1" max="max-product()" class="price form-control" >
-           	
-           	<h5>Material: Wood</h5> 
-			<h5>Local 	: Japanese</h5>
-           	
-      		
-           	<input type="button" name="" value="Add cost">
-           	<input type="button" name="" value=" set">
-           	
-       </div>	
-     </div>	
-	</div>
-	<div class="row">
-		<div  >
-			<div class="col-md-1">
-				<img src="<?= Url::base(); ?>../theme/img/logo/default.png" height="50px" width="50px" class="img-circle" >
-			</div>
-			<div class="col-md-11">
-				<textarea class="form-control"></textarea>
-			</div>
-		</div>
-		<div>
-			<div class="facebook">
-				<a href="#">
-					<img src="">
-				</a>
-			</div>
-			<div class="google">
-					<a href="#">
-						<img src="" alt="">
-					</a>
-			</div>
-			<div class="youtube">
-				<a href="">
-					<img src="" alt="">
-				</a>
-			</div>
-		</div>
-		
+		                </div>
+                        <div class="numbers-row">
+                            <input type="number" name="number"  id="number" value="1">
+						</div>
+                        <button class="single_add_to_cart_button Addcart" data-id="<?= $product->id ?>" type="button">Thêm vào giỏ hàng</button>
+	                </div>
+	                <div class="quick-desc" id="content_view">
+	                    <?= $product->description ?>
+	                </div>
+	                <div class="social-sharing">
+	                    <div class="widget widget_socialsharing_widget">
+	                        <h3 class="widget-title-modal">Share this product</h3>
+	                        <ul class="social-icons">
+	                            <li><a target="_blank" title="Facebook" href="#" class="facebook social-icon"><i class="fa fa-facebook"></i></a></li>
+	                            <li><a target="_blank" title="Twitter" href="#" class="twitter social-icon"><i class="fa fa-twitter"></i></a></li>
+	                            <li><a target="_blank" title="Pinterest" href="#" class="pinterest social-icon"><i class="fa fa-pinterest"></i></a></li>
+	                            <li><a target="_blank" title="Google +" href="#" class="gplus social-icon"><i class="fa fa-google-plus"></i></a></li>
+	                            <li><a target="_blank" title="LinkedIn" href="#" class="linkedin social-icon"><i class="fa fa-linkedin"></i></a></li>
+	                        </ul>
+	                    </div>
+	                </div>
+	            </div><!-- .product-info -->
+	        </div>
+	    </div>
 	</div>
 
+</div>
 
+<div class="row">
+	<div id="content" style="margin-top: 30px;">
+		<h1 class="text-center">Bài Viết về sản phẩm</h1>
+		<?= Html::decode($product->content) ?>
+	</div>
 </div>

@@ -52,6 +52,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
+            [['phone', 'address', 'name'],'string'],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
         ];
     }
@@ -185,5 +186,16 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    public static function getUserCurrent()
+    {
+        $id = Yii::$app->user->id;
+        $member = self::findOne($id);
+        if ($member) {
+            return $member;
+        }
+        return false;
+
     }
 }

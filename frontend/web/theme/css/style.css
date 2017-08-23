@@ -1805,6 +1805,7 @@ h3.heading-title {
   margin: 0 20px 0 0;
   padding: 0;
   position: relative;
+  max-width: 90px;
 }
 ul.product-list-widget .content > a {
   color: #000000;
@@ -6292,3 +6293,66 @@ h3.widget-title-modal {
   background: #ED3C13 none repeat scroll 0 0;
 }
 
+.category_product {
+      width: 23%;
+    float: left;
+    margin-right: 10px;
+}
+
+#img_view{
+  width: 100%;
+}
+.credit-cart {
+  padding: 10px;
+  background-color: #EFEFEF;
+  border-radius: 4px;
+}
+
+.credit-cart .col-md-8 {
+  margin-bottom: 4px;
+}
+
+.mod--cardlist {
+  margin-bottom: 10px;
+}
+
+.mod--cardlist ul {
+  font-size: 0;
+  text-align: right;
+}
+
+.mod--cardlist ul li {
+  display: inline-block;
+  margin-right: 20px;
+  width: 40px;
+  border: 1px outset;
+  border-radius: 5px;
+}
+
+.mod--cardlist ul li img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+}
+
+.exp_month, .exp_year {
+  width: 46%!important;
+  float: left;
+  margin-right: 4px;
+}
+.date span {
+  float: left;
+  width: 4%;
+  font-size: 27px;
+  height: 33px;
+  text-align: center;
+}
+
+.category-items a:hover li{
+  background-color: red;
+  color: white;
+}
+
+.category-items>a>li {
+  padding-left: 10px!important;
+}

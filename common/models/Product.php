@@ -35,9 +35,9 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['company_id', 'user_id', 'name', 'status','product_cnt', 'created_at', 'updated_at', 'category_id'], 'integer'],
+            [['company_id', 'user_id', 'status','product_cnt', 'created_at', 'updated_at', 'category_id'], 'integer'],
             [['company_id', 'user_id'], 'required', 'message' => '{attribute} không được để trống'],
-            [['description'], 'string'],
+            [['description', 'name', 'content'], 'string'],
             [['deleted_at'], 'safe'],
             [['title', 'price'], 'string', 'max' => 255],
             [['public_image'], 'file', 'skipOnEmpty' => true]
@@ -90,5 +90,32 @@ class Product extends \yii\db\ActiveRecord
     public function getCategory()
     {
         return $this->hasOne(Category::className(), ['id' => 'category_id']);
+    }
+
+    public function getProductById($id)
+    {
+        $data = self::find()->where(['id' => $id])->one();
+        return $data;
+    }
+
+    public function getProuctByOne()
+    {
+        $category = Category::getCategoryLitmit();
+        $product = self::find()->where(['category_id' => $category[0]])->orderBy(['id' => SORT_DESC])->limit(5)->all();
+        return $product;
+    }
+
+    public function getProuctByTwo()
+    {
+        $category = Category::getCategoryLitmit();
+        $product = self::find()->where(['category_id' => $category[1]])->orderBy(['id' => SORT_DESC])->limit(5)->all();
+        return $product;
+    }
+
+    public function getProuctByThree()
+    {
+        $category = Category::getCategoryLitmit();
+        $product = self::find()->where(['category_id' => $category[2]])->orderBy(['id' => SORT_DESC])->limit(5)->all();
+        return $product;
     }
 }

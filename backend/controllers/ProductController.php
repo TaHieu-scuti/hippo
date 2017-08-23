@@ -132,4 +132,18 @@ class ProductController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    /**
+     * Finds and view detail
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Product the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionDetail($id)
+    {
+        $model = Product::findOne($id);
+            return $this->render('detail_product', [
+                'model' => $model,
+            ]);
+    }
 }
