@@ -6,7 +6,10 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
-
+use common\models\User;
+use common\models\Product;
+use common\models\Order;
+use common\models\Company;
 /**
  * Site controller
  */
@@ -60,7 +63,17 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $users = User::find()->count();
+        $products = Product::find()->count();
+        $orders = Order::find()->count();
+        $companies = Company::find()->count();
+        return $this->render('index',[
+                'model' => $model,
+                'users' => $users,
+                'products' => $products,
+                'companies' => $companies,
+                'orders' => $orders,
+            ]);
     }
 
     /**
