@@ -53,4 +53,15 @@ class OrderItem extends \yii\db\ActiveRecord
             'deleted_at' => 'Deleted At',
         ];
     }
+
+    public function createNewOrderItem($order, $productIds, $member)
+    {
+        foreach ($productIds as $key => $idProduct) {
+            $model = new self;
+            $model->order_id = $order->id;
+            $model->product_id = $idProduct;
+            $model->user_id = $member->id;
+            $model->save();   
+        }
+    }
 }

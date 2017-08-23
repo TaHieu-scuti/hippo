@@ -60,9 +60,26 @@ class CartController extends Controller
     public function actionAddCart()
     {
         $addCart = new ShoppingCart;
-        $addCart->AddCart((int)$_POST['id']);
+        $addCart->AddCart((int)$_POST['id'], (int)$_POST['number']);
+
+        return \yii\helpers\Json::encode(Yii::$app->session['cart']);
     }
 
+    public function actionListCart()
+    {
+        $this->layout = 'cart-list';
+        $listCart = Yii::$app->session['cart'];
+        return $this->render('@frontend/views/product/cart', ['listCart' => $listCart]);
+    }
+
+    public function actionUpdateCart()
+    {
+        $this->layout = 'cart-list';
+        $addCart = new ShoppingCart;
+        $addCart->updateCart((int)$_POST['id'], (int)$_POST['number']);
+        $content = $this->renderPartial('@frontend/views/product/cart', ['listCart' => Yii::$app->session['cart']]);
+        return \yii\helpers\Json::encode($content);
+    }
     /**
      * Creates a new Cart model.
      * If creation is successful, the browser will be redirected to the 'view' page.

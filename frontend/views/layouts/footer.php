@@ -182,15 +182,7 @@ use yii\helpers\Url;
                             <div class="price-box">
                                 <p class="price"><span class="special-price"><span class="amount" id="price_view"></span></span></p>
                             </div>
-                            <a href="" class="see-all" id="see_all">Xem tất cả các thông tin</a>
-                            <div class="quick-add-to-cart">
-                                <form method="post" class="cart">
-                                    <div class="numbers-row">
-                                        <input type="number" id="french-hens" value="3">
-                                    </div>
-                                    <button class="single_add_to_cart_button" type="submit">Add to cart</button>
-                                </form>
-                            </div>
+                            <a href="" class="see-all" id="see_all">Thông tin chi tiết</a>
                             <div class="quick-desc" id="content_view">
                                 
                             </div>

@@ -24,13 +24,12 @@ $this->title = 'My Yii Application';
                             </a>
                             <div class="product-button-list">
                                 <div class="add-to-cart-list">
-                                    <a class="btn-product btn-cart" href="#">
-                                        <i aria-hidden="true" class="fa fa-shopping-cart"></i>
+                                    <a class="btn-product btn-cart " href="javascript:void(0)">
+                                        <i aria-hidden="true" class="fa fa-shopping-cart Addcart" data-id="<?= $product->id ?>"></i>
                                     </a>
                                 </div>
                                 <div class="product-button-group">
-                                    <a class="add-to-wishlist" href="#"><i aria-hidden="true" class="fa fa-heart"></i></a>
-                                    <a class="add-to-compare" href="#"><i aria-hidden="true" class="fa fa-refresh"></i></a>
+                                    <a class="add-to-compare" href="<?= Url::to('/product/detail?id='.$product->id ) ?>"><i class="fa fa-info" aria-hidden="true" title="Thông tin chi tiết sản phẩm"></i></a>
                                     <a href="#" title="Quick view" data-toggle="modal" data-content="<?= $product->description ?>" data-id="<?= $product->id ?>" class="btn-quickview view_product" data-target="#productModal"><i class="fa fa-search" aria-hidden="true"></i></a>
                                 </div>
                             </div>
@@ -57,24 +56,4 @@ $this->title = 'My Yii Application';
     </div>
 <?php endforeach ?>
 
-<script>
-    $('.Addcart').click(function(){
-        var id = $(this).data('id');
-        
-        $.ajax({
-            type: 'post',
-            url: '/cart/add-cart',
-            dataType: 'json',
-            data: {
-                id : id
-            },
-            success: function(data) {
-                console.log(data);
-                alert('ok')
-            },
-            error: function(data) {
-                alert('not ok');
-            }
-        })
-    });
-</script>
+

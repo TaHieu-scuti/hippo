@@ -36,7 +36,7 @@ $model = new LoginForm;
 							</li>
 							<?php if (Yii::$app->user->isGuest) :?>
 								<li class="menu-item log-in">
-									<a href="my-account.html">
+									<a href="javascript:void(0)">
 									   <i class="fa fa-user"></i> Login
 									</a>
 									<div class="login-down">
@@ -92,8 +92,8 @@ $model = new LoginForm;
 									</ul>
 								</li>
 								<li class="menu-item cart-list ">
-									<a href="#">
-										<i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng 
+									<a href="<?= Url::to('/cart/list-cart') ?>">
+										<i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng <font class="badge" style="color:red"><?= isset(Yii::$app->session['cart']) ? count(Yii::$app->session['cart']) : 0 ?></font>
 									</a>
 								</li>
 							<?php endif ?>
@@ -108,8 +108,8 @@ $model = new LoginForm;
 			<div class="row">
 				<div class="col-md-4 col-sm-4 col-xs-8">
 					<div class="header-logo">
-						<a href="index.html">
-							<img src="<?= Url::base(); ?>/theme/img/logo/home-2.png" alt="" />
+						<a href="<?= Url::to('/') ?>">
+							<img src="<?= Url::base(); ?>/theme/img/logo/logo.png" alt="" />
 						</a>
 					</div>
 				</div>
@@ -126,51 +126,18 @@ $model = new LoginForm;
 						<nav>
 							<ul>
 								<li class="expand">
-									<a href="index.html">
-										<span class="menu-label">Home</span>
-										<span class="menu-drop-icon"></span>
-									</a>
-									<ul class="main-sub-menu">
-										<li class="sub-menu-title">Home Pages</li>
-										<li><a href="index-2.html">Home Version 2</a></li>
-									</ul>
-								</li>
-								<li>
-									<a href="#">
-										<span class="menu-label">Products</span>
+									<a href="<?= Url::to('/') ?>">
+										<span class="menu-label">Trang Chủ</span>
 									</a>
 								</li>
 								<li>
-									<a href="#">
-										<span class="menu-label">Page</span>
-										<span class="menu-drop-icon"></span>
-									</a>
-									<div class="mega-menu">
-										<div class="mega-menu-left">
-											<h5 class="sub-menu-title">Column 1</h5>
-											<ul>
-												<li><a href="contact.html">Contact</a></li>
-												<li><a href="price.html">Picing table</a></li>
-												<li><a href="team-member.html">Team member</a></li>
-											</ul>
-										</div>
-										<div class="mega-menu-left">
-											<h5 class="sub-menu-title">Column 2</h5>
-											<ul>
-												<li><a href="cart.html">Cart</a></li>
-												<li><a href="checkout.html">Checkout</a></li>
-											</ul>
-										</div>
-									</div>
-								</li>
-								<li>
-									<a href="blog.html">
-										<span class="menu-label">Blog</span>
+									<a href="<?= Url::to('/cart/list-cart') ?>">
+										<span class="menu-label">Giỏ Hàng</span>
 									</a>
 								</li>
 								<li>
-									<a href="contact.html">
-										<span class="menu-label">Contact</span>
+									<a href="<?= Url::to('/site/contact') ?>">
+										<span class="menu-label">Liên Hệ</span>
 									</a>
 								</li>
 							</ul>
@@ -237,25 +204,13 @@ $model = new LoginForm;
 												<h2>categories</h2>
 											</a>
 											<ul class="category-items">
-												<li class="menu-item electronic-item">
-													<a href="#">
-														<i class="fa fa-laptop" aria-hidden="true"></i>
-														<span>Laptop / computer</span>
+												<?php foreach (Category::getAllCategory() as $key => $category): ?>
+													<a href="<?= Url::to('/product/category?id='.$category->id) ?>" data-id="<?= $category->id ?>" class="categoriesId">
+													<li class="menu-item electronic-item">
+														<?= $category->name ?>
+													</li>
 													</a>
-													<span class="menu-drop-icon"></span>
-													<div class="sub-menu">
-														<div class="sub-menu-line">
-															<div class="sub-menu-left">
-																<h2 class="menu-item-heading">Laptops</h2>
-																<ul>
-																	<?php foreach (Category::getAllCategory() as $key => $category): ?>
-																		<li><a href="<?= Url::to('/product/category?id='.$category->id) ?>" data-id="<?= $category->id ?>" class="categoriesId"><?= $category->name ?></a></li>
-																	<?php endforeach ?>
-																</ul>
-															</div>
-														</div>
-													</div>
-												</li>
+												<?php endforeach ?>
 											</ul>
 										</li>
 									</ul>
@@ -264,14 +219,12 @@ $model = new LoginForm;
 						</div>
 					</div>
 					<div class="col-sm-6 col-xs-10">
-						<div class="search-by-category">
+						<!-- <div class="search-by-category">
 							<div class="search-container">
 								<select class="selectpicker" data-live-search="true">
-								  <option data-tokens="ketchup mustard">All Categories</option>
-								  <option data-tokens="mustard">Accessories</option>
-								  <option data-tokens="frosting">Apparel & Accessories</option>
-								  <option data-tokens="frosting">Bags</option>
-								  <option data-tokens="frosting">Bags & Shoes</option>
+									<?php foreach (Category::getAllCategory() as $key => $category): ?>
+										<option data-tokens="<?= $category->name ?>"><a href="<?= Url::to('/product/category?id='.$category->id) ?>" data-id="<?= $category->id ?>" class="categoriesId"><?= $category->name ?></a></option>
+								  	<?php endforeach ?>
 								</select>
 							</div>
 							<div class="search-inner">
@@ -280,7 +233,7 @@ $model = new LoginForm;
 									<i class="fa fa-search"></i>
 								</button>
 							</div>
-						</div>
+						</div> -->
 					</div>
 					<div class="hidden-lg hidden-md hidden-sm col-xs-2">
 						<div class="mobile-cart-inner pull-right">
@@ -288,7 +241,7 @@ $model = new LoginForm;
 							<span class="num-of-item">02</span>
 						</div>
 					</div>
-					<div class="col-sm-3 hidden-xs">
+<!-- 					<div class="col-sm-3 hidden-xs">
 						<div class="shopping-cart-info clearfix">
 							<div class="shopping-cart">
 								<div class="shopping-cart-control">
@@ -338,7 +291,7 @@ $model = new LoginForm;
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
@@ -348,55 +301,8 @@ $model = new LoginForm;
 				<!-- Slider Image -->
 				<div id="mainSlider" class="nivoSlider slider-image">
 					<img src="<?= Url::base(); ?>/theme/img/slider/mac2.png" alt="main slider" title="#htmlcaption1"/>
-					<img src="<?= Url::base(); ?>/theme/img/slider/slider-8-2.jpg" alt="main slider" title="#htmlcaption2"/>
-					<img src="<?= Url::base(); ?>/theme/img/slider/slider-8-3.jpg" alt="main slider" title="#htmlcaption3"/>
-				</div>
-				<!-- Slider Caption 1 -->
-				<div id="htmlcaption1" class="nivo-html-caption slider-caption-1">
-					<div class="slider-progress"></div>
-				</div>
-				<!-- Slider Caption 2 -->
-				<div id="htmlcaption2" class="nivo-html-caption slider-caption-2">
-					<div class="slider-progress"></div>
-					<div class="slide-text slider-8-text-2">
-						<div class="middle-text">
-							<div class="cap-dec-black wow bounceIn" data-wow-duration="0.7s" data-wow-delay="0s">
-								<p>Relief Raise Awareness</p>
-							</div>
-							<div class="fashion-title-black wow bounceIn" data-wow-duration="1s" data-wow-delay="0.2s">
-								<h1>Bag Leather</h1>
-							</div>
-							<div class="cap-details wow bounceInRight" data-wow-duration="1.3s" data-wow-delay="0.2s">
-								<p>Bill and Melinda Gates Rosa Parks collaborative maintain campaign social impact</p>
-							</div>
-							<div class="cap-shop-black wow bounceIn" data-wow-duration="1.6s" data-wow-delay=".5s">
-								<a href="#">Shop Now</a>
-							</div>
-						</div>
-					</div>
-					<div class="slide-image wow bounceIn" data-wow-duration="1.6s" data-wow-delay=".5s">
-						<img src="<?= Url::base(); ?>/theme/img/slider/slider-bg-8-2.png" alt="" />
-					</div>
-				</div>
-				<!-- Slider Caption 3 -->
-				<div id="htmlcaption3" class="nivo-html-caption slider-caption-3">
-					<div class="slider-progress"></div>
-					<div class="slide-text slider-8-text-2">
-						<div class="middle-text">
-							<div class="cap-dec wow bounceIn" data-wow-duration="0.7s" data-wow-delay="0s">
-								<p>democracy Partner</p>
-							</div>
-							<div class="fashion-title-black wow bounceIn" data-wow-duration="1s" data-wow-delay="0.2s">
-								<h1>Women's Shoes</h1>
-							</div>
-							<div class="cap-details wow bounceInRight" data-wow-duration="1.3s" data-wow-delay="0.2s">
-								<p>Atheway to a better life prosperity dignity agenda working alongside</p>
-							</div>
-							<div class="cap-shop-black wow bounceIn" data-wow-duration="1.6s" data-wow-delay=".5s">
-								<a href="#">Shop Now</a>
-							</div>
-						</div>
-					</div>
+					<img src="<?= Url::base(); ?>/theme/img/slider/game.jpg" alt="main slider" title="#htmlcaption2"/>
+					<img src="<?= Url::base(); ?>/theme/img/slider/mac3.png" alt="main slider" title="#htmlcaption3"/>
 				</div>
 			</div>
 			<!-- Slider End-->

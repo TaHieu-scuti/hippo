@@ -9,7 +9,12 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\models\Category;
+use common\models\Order;
+use common\models\OrderItem;
 use common\models\Cart;
+use common\models\User;
+use common\components\PayJpComponent;
+use common\libs\Cart as ShoppingCart;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -74,6 +79,25 @@ class ProductController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    public function actionPayment()
+    {
+        $this->layout = 'cart-list';
+        $user = new User;
+        $cart = new ShoppingCart;
+        $member = $user->getUserCurrent();
+        $payment = new PayJpComponent(Yii::$app->params['privateApiPayJp']);
+        $success = $payment->transaction($_POST['payjpToken'], (int)$_POST['price']);
+        if ($success === false) {
+            return $this->render('@frontend/views/payment/error');
+        }
+
+        $order = Order::createNewOrder($member);
+        $orderItem = OrderItem::createNewOrderItem($order, $_POST['productId'], $member);
+        $cart->deleteCart($_POST['productId']);
+        Yii::$app->session->setFlash('success', "Bạn đã thanh toán thành công");
+        return $this->render('@frontend/views/product/cart', ['listCart' => Yii::$app->session['cart']]);
     }
 
     /**

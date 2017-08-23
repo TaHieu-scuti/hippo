@@ -84,4 +84,19 @@ class Category extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Product::className(), ['category_id' => 'id']);
     }
+
+    public static function getCategoryLitmit()
+    {
+        $category = self::find()
+            ->andWhere(['status' => 0])
+            ->andWhere(['deleted_at' => null])
+            ->orderBy(['id' => SORT_DESC ])
+            ->limit(3)
+            ->all();
+        $array = [];
+        foreach ($category as $key => $value) {
+            $array[$key] = $value->id;
+        }
+        return $array;
+    }
 }

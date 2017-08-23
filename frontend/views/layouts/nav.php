@@ -2,7 +2,11 @@
 use frontend\assets\AppAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
-
+use common\models\Product;
+$category = new Product;
+$array1 = $category->getProuctByOne();
+$array2 = $category->getProuctByTwo();
+$array3 = $category->getProuctByThree();
 
 ?>
 
@@ -40,185 +44,47 @@ use yii\helpers\Url;
 			<div class="widget-tab-content tab-content">
 				<div id="new" class="tab-pane fade in active" role="tabpanel">
 					<ul class="product-list-widget">
-						<li>
-							<a href="#" class="thumbnail">
-								<img src="<?= Url::base(); ?>/theme/img/product/widget/4.jpg" alt="">
-							</a>
-							<div class="content">
-								<a href="#">Loafer Cara D.skirt collarless</a>
-								<span class="amount">$125.00</span>
-							</div>
-						</li>
-						<li>
-							<a href="#" class="thumbnail">
-								<img src="<?= Url::base(); ?>/theme/img/product/widget/5.jpg" alt="">
-							</a>
-							<div class="content">
-								<a href="#">Minimal black ribbed bandeau</a>
-								<div class="ratting">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o"></i>
+						<?php foreach ($array1 as $key => $product): ?>
+							<li>
+								<a href="<?= Url::to('/product/detail?id='.$product->id) ?>" class="thumbnail">
+									<img src="<?= Url::base(); ?>../backend/uploads/<?= $product->public_image ? $product->public_image : 'default.png' ?>" alt="">
+								</a>
+								<div class="content">
+									<a href="<?= Url::to('/product/detail?id='.$product->id) ?>"><?= $product->name ? $product->name : '' ?></a>
+									<span class="amount"><?= $product->price ? number_format($product->price) : 0 ?> VND</span>
 								</div>
-								<span class="amount">$310.00</span>
-							</div>
-						</li>
-						<li>
-							<a href="#" class="thumbnail">
-								<img src="<?= Url::base(); ?>/theme/img/product/widget/6.jpg" alt="">
-							</a>
-							<div class="content">
-								<a href="#">Jil sander vasari white shirt</a>
-								<span class="amount">$120.00</span>
-							</div>
-						</li>
-						<li>
-							<a href="#" class="thumbnail">
-								<img src="<?= Url::base(); ?>/theme/img/product/widget/7.jpg" alt="">
-							</a>
-							<div class="content">
-								<a href="#">Cashmere Saint Laurent &ndash; s4</a>
-								<div class="ratting">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o"></i>
-								</div>
-								<span class="amount">$18.20</span>
-								-
-								<span class="amount">$19.20</span>
-							</div>
-						</li>
-						<li>
-							<a href="#" class="thumbnail">
-								<img src="<?= Url::base(); ?>/theme/img/product/widget/8.jpg" alt="">
-							</a>
-							<div class="content">
-								<a href="#">Oversized sweatshirt</a>
-								<del class="amount">$12.00</del>
-								-
-								<span class="amount">$10.00</span>
-							</div>
-						</li>
+							</li>
+						<?php endforeach ?>						
 					</ul>
 				</div>
 				<div id="latest" class="tab-pane fade" role="tabpanel">
 					<ul class="product-list-widget">
-						<li>
-							<a href="#" class="thumbnail">
-								<img src="<?= Url::base(); ?>/theme/img/product/widget/1.jpg" alt="">
-							</a>
-							<div class="content">
-								<a href="#">Nullam sodales porttitor sapien</a>
-								<span class="amount">$234.00</span>
-							</div>
-						</li>
-						<li>
-							<a href="#" class="thumbnail">
-								<img src="<?= Url::base(); ?>/theme/img/product/widget/2.jpg" alt="">
-							</a>
-							<div class="content">
-								<a href="#">Etiam convallis enim a libero accumsan</a>
-								<span class="amount">$123.00</span>
-							</div>
-						</li>
-						<li>
-							<a href="#" class="thumbnail">
-								<img src="<?= Url::base(); ?>/theme/img/product/widget/3.jpg" alt="">
-							</a>
-							<div class="content">
-								<a href="#">Fusce aliquam simple &ndash; s15</a>
-								<div class="ratting">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o"></i>
+						<?php foreach ($array2 as $key => $product): ?>
+							<li>
+								<a href="<?= Url::to('/product/detail?id='.$product->id) ?>" class="thumbnail">
+									<img src="<?= Url::base(); ?>../backend/uploads/<?= $product->public_image ? $product->public_image : 'default.png' ?>" alt="">
+								</a>
+								<div class="content">
+									<a href="<?= Url::to('/product/detail?id='.$product->id) ?>"><?= $product->name ? $product->name : '' ?></a>
+									<span class="amount"><?= $product->price ? number_format($product->price) : 0 ?> VND</span>
 								</div>
-								<span class="amount">$400.00</span>
-							</div>
-						</li>
-						<li>
-							<a href="#" class="thumbnail">
-								<img src="<?= Url::base(); ?>/theme/img/product/widget/9.jpg" alt="">
-							</a>
-							<div class="content">
-								<a href="#">Fusce aliquam sample &ndash; s2</a>
-								<span class="amount">$22.00</span>
-							</div>
-						</li>
-						<li>
-							<a href="#" class="thumbnail">
-								<img src="<?= Url::base(); ?>/theme/img/product/widget/10.jpg" alt="">
-							</a>
-							<div class="content">
-								<a href="#">Fusce aliquam sample &ndash; s3</a>
-								<span class="amount">$42.00</span>
-							</div>
-						</li>
+							</li>
+						<?php endforeach ?>						
 					</ul>
 				</div>
 				<div id="viewed" class="tab-pane fade in" role="tabpanel">
 					<ul class="product-list-widget">
-						<li>
-							<a href="#" class="thumbnail">
-								<img src="<?= Url::base(); ?>/theme/img/product/widget/14.jpg" alt="">
-							</a>
-							<div class="content">
-								<a href="#">Sander varari white shirt</a>
-								<span class="amount">$155.00</span>
-							</div>
-						</li>
-						<li>
-							<a href="#" class="thumbnail">
-								<img src="<?= Url::base(); ?>/theme/img/product/widget/8.jpg" alt="">
-							</a>
-							<div class="content">
-								<a href="#">Oversized sweatshirt</a>
-								<span class="price">
-									<del class="amount">$12.00</del>
-									-
-									<span class="amount">$10.00</span>
-								</span>
-							</div>
-						</li>
-						<li>
-							<a href="#" class="thumbnail">
-								<img src="<?= Url::base(); ?>/theme/img/product/widget/1.jpg" alt="">
-							</a>
-							<div class="content">
-								<a href="#">Nullam sodales porttitor sapien</a>
-								<span class="amount">$234.00</span>
-							</div>
-						</li>
-						<li>
-							<a href="#" class="thumbnail">
-								<img src="<?= Url::base(); ?>/theme/img/product/widget/15.jpg" alt="">
-							</a>
-							<div class="content">
-								<a href="#">Fusce aliquam sample &ndash; s2</a>
-								<span class="amount">$22.00</span>
-							</div>
-						</li>
-						<li>
-							<a href="#" class="thumbnail">
-								<img src="<?= Url::base(); ?>/theme/img/product/widget/10.jpg" alt="">
-							</a>
-							<div class="content">
-								<a href="#">Fusce aliquam sample &ndash; s3</a>
-								<div class="ratting">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o"></i>
+						<?php foreach ($array3 as $key => $product): ?>
+							<li>
+								<a href="<?= Url::to('/product/detail?id='.$product->id) ?>" class="thumbnail">
+									<img src="<?= Url::base(); ?>../backend/uploads/<?= $product->public_image ? $product->public_image : 'default.png' ?>" alt="">
+								</a>
+								<div class="content">
+									<a href="<?= Url::to('/product/detail?id='.$product->id) ?>"><?= $product->name ? $product->name : '' ?></a>
+									<span class="amount"><?= $product->price ? number_format($product->price) : 0 ?> VND</span>
 								</div>
-								<span class="amount">$42.00</span>
-							</div>
-						</li>
+							</li>
+						<?php endforeach ?>	
 					</ul>
 				</div>
 			</div>

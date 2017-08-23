@@ -28,8 +28,7 @@ AppAsset::register($this);
     <div class="product-sell-area section-padding">
         <div class="container">
             <div class="row">
-                <?= $this->render('@app/views/layouts/nav.php', []) ?>
-                <div class="col-md-9">
+                <div class="col-md-12" id="content">
                     <?= $content ?>
                 </div>                
             </div>
@@ -58,15 +57,35 @@ AppAsset::register($this);
                 number: num
             },
             success: function(data) {
-                toastr.success('Bạn đã thêm giỏ hàng thành công');
+                alert('ok')
             },
             error: function(data) {
-                toastr.error('Đã sảy ra lỗi khi thêm vào giỏ hàng');
+                alert('not ok');
             }
         })
     });
 
-    
+    $('.delete_sp').click(function() {
+        var id = $(this).data('id');
+        number = 0;
+
+        $.ajax({
+            type: 'post',
+            url: '/cart/update-cart',
+            dataType: 'json',
+            data: {
+                id : id,
+                number: number
+            },
+            success: function(data) {
+                $('#content').html(data);
+            },
+            error: function(data) {
+                alert('Sảy ra lỗi khi thêm vào giỏ hàng');
+            }
+        })
+
+    });
 </script>
 </html>
 <?php $this->endPage() ?>

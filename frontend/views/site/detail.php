@@ -27,33 +27,24 @@ $this->params['breadcrumbs'][] = $this->title;
 	                    <p class="price"><span class="special-price"><span class="amount" id="price_view" style="color:red"><?= number_format($product->price) ?> VND</span></span></p>
 	                </div>
 	                <div class="price-box">
-	                	Thuế VAT : <span style="color:red">Giá Trên chưa bao gồm thuế VAT</span>
+	                	<font style="font-weight: bold;">Thuế VAT</font> : <span style="color:red">Giá Trên chưa bao gồm thuế VAT</span>
 	                </div>
 	                <div class="price-box">
-	                	Bảo Hành : <span>12 Tháng</span>
+	                	<font style="font-weight: bold;">Bảo Hành</font> : <span>12 Tháng</span>
 	                </div>
 	                <div class="price-box">
-	                	Thời gian vận chuyển : <span>7 ngày sau khi đặt hàng</span>
+	                	<font style="font-weight: bold;">Thời gian vận chuyển</font> : <span>7 ngày sau khi đặt hàng</span>
 	                </div>
 	                
 	                <div class="quick-add-to-cart">
-	                	<?php $form = ActiveForm::begin(); ?>
 		                <div class="price-box">
-							<?= 
-								$form->field($model, 'status')
-						        ->dropDownList(
-						            [
-						            	0 => ' Thanh Toán trực tiếp ',
-						            	1 => ' hình thức Chuyển Khoản'
-						            ]          // Flat array ('id'=>'label')    // options
-						        )->label('Hình Thức Thanh Toán')
-							?>
+							<font style="font-weight: bold;">Hình thức Thanh Toán</font>  : Thanh Toán trức tuyến
+
 		                </div>
                         <div class="numbers-row">
-                            <input type="number" id="french-hens" value="1">
-                        </div>
-                        <button class="single_add_to_cart_button" data-id="<?= $product->id ?>" type="button">Add to cart</button>
-	                    <?php ActiveForm::end(); ?>
+                            <input type="number" name="number"  id="number" value="1">
+						</div>
+                        <button class="single_add_to_cart_button Addcart" data-id="<?= $product->id ?>" type="button">Thêm vào giỏ hàng</button>
 	                </div>
 	                <div class="quick-desc" id="content_view">
 	                    <?= $product->description ?>
@@ -75,4 +66,11 @@ $this->params['breadcrumbs'][] = $this->title;
 	    </div>
 	</div>
 
+</div>
+
+<div class="row">
+	<div id="content" style="margin-top: 30px;">
+		<h1 class="text-center">Bài Viết về sản phẩm</h1>
+		<?= Html::decode($product->content) ?>
+	</div>
 </div>

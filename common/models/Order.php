@@ -58,4 +58,17 @@ class Order extends \yii\db\ActiveRecord
             'deleted_at' => 'Deleted At',
         ];
     }
+
+    public static function createNewOrder($member)
+    {
+        $model = new self;
+        $model->user_id = $member->id;
+        $model->name_recevice = $member->name;
+        $model->location_recevice = $member->address;
+        $model->phone_recevice = $member->phone;
+        $model->amount = $_POST['price'];
+        $model->save();
+
+        return $model;
+    }
 }

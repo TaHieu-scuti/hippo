@@ -95,8 +95,27 @@ class Product extends \yii\db\ActiveRecord
     public function getProductById($id)
     {
         $data = self::find()->where(['id' => $id])->one();
-        echo "<pre>";
-        var_dump($data);die;
         return $data;
+    }
+
+    public function getProuctByOne()
+    {
+        $category = Category::getCategoryLitmit();
+        $product = self::find()->where(['category_id' => $category[0]])->orderBy(['id' => SORT_DESC])->limit(5)->all();
+        return $product;
+    }
+
+    public function getProuctByTwo()
+    {
+        $category = Category::getCategoryLitmit();
+        $product = self::find()->where(['category_id' => $category[1]])->orderBy(['id' => SORT_DESC])->limit(5)->all();
+        return $product;
+    }
+
+    public function getProuctByThree()
+    {
+        $category = Category::getCategoryLitmit();
+        $product = self::find()->where(['category_id' => $category[2]])->orderBy(['id' => SORT_DESC])->limit(5)->all();
+        return $product;
     }
 }
