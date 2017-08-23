@@ -27,9 +27,9 @@ $this->title = 'My Yii Application';
                                 </div>
                                 <div class="details">
                                     <div class="number">
-                                        <span data-counter="counterup" data-value="1349">0</span>
+                                        <span data-counter="counterup" data-value="1349"><?= $users  ?></span>
                                     </div>
-                                    <div class="desc"> New Feedbacks </div>
+                                    <div class="desc"> User </div>
                                 </div>
                                 <a class="more" href="javascript:;"> View more
                                     <i class="m-icon-swapright m-icon-white"></i>
@@ -43,8 +43,8 @@ $this->title = 'My Yii Application';
                                 </div>
                                 <div class="details">
                                     <div class="number">
-                                        <span data-counter="counterup" data-value="12,5">0</span>M$ </div>
-                                    <div class="desc"> Total Profit </div>
+                                        <span data-counter="counterup" ><?= $products ?></span> </div>
+                                    <div class="desc"> Sản phẩm </div>
                                 </div>
                                 <a class="more" href="javascript:;"> View more
                                     <i class="m-icon-swapright m-icon-white"></i>
@@ -58,9 +58,9 @@ $this->title = 'My Yii Application';
                                 </div>
                                 <div class="details">
                                     <div class="number">
-                                        <span data-counter="counterup" data-value="549">0</span>
+                                        <span data-counter="counterup" ><?= $orders ?></span>
                                     </div>
-                                    <div class="desc"> New Orders </div>
+                                    <div class="desc"> Đơn hàng </div>
                                 </div>
                                 <a class="more" href="javascript:;"> View more
                                     <i class="m-icon-swapright m-icon-white"></i>
@@ -73,9 +73,9 @@ $this->title = 'My Yii Application';
                                     <i class="fa fa-globe"></i>
                                 </div>
                                 <div class="details">
-                                    <div class="number"> +
-                                        <span data-counter="counterup" data-value="89"></span>% </div>
-                                    <div class="desc"> Brand Popularity </div>
+                                    <div class="number"> 
+                                        <span data-counter="counterup" ></span><?= $companies ?></div>
+                                    <div class="desc"> Nhà cung cấp </div>
                                 </div>
                                 <a class="more" href="javascript:;"> View more
                                     <i class="m-icon-swapright m-icon-white"></i>
