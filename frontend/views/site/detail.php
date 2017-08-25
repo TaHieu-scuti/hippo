@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="numbers-row">
                             <input type="number" name="number"  id="number" value="1">
 						</div>
-                        <button class="single_add_to_cart_button Addcart" data-id="<?= $product->id ?>" type="button">Thêm vào giỏ hàng</button>
+                        <button class="single_add_to_cart_button Addcart" data-id="<?= $product->id ?>" type="button"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
 	                </div>
 	                <div class="quick-desc" id="content_view">
 	                    <?= $product->description ?>

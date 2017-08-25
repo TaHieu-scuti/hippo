@@ -68,7 +68,10 @@ class CartController extends Controller
     public function actionListCart()
     {
         $this->layout = 'cart-list';
-        $listCart = Yii::$app->session['cart'];
+        $listCart = [];
+        if (isset(Yii::$app->session['cart'])) {
+            $listCart = Yii::$app->session['cart'];
+        }
         return $this->render('@frontend/views/product/cart', ['listCart' => $listCart]);
     }
 

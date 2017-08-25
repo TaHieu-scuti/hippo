@@ -130,11 +130,13 @@ $model = new LoginForm;
 										<span class="menu-label">Trang Chủ</span>
 									</a>
 								</li>
-								<li>
-									<a href="<?= Url::to('/cart/list-cart') ?>">
-										<span class="menu-label">Giỏ Hàng</span>
-									</a>
-								</li>
+								<?php if (!Yii::$app->user->getIsGuest()): ?>
+									<li>
+										<a href="<?= Url::to('/cart/list-cart') ?>">
+											<span class="menu-label">Giỏ Hàng</span>
+										</a>
+									</li>
+								<?php endif ?>								
 								<li>
 									<a href="<?= Url::to('/site/contact') ?>">
 										<span class="menu-label">Liên Hệ</span>
@@ -201,7 +203,7 @@ $model = new LoginForm;
 									<ul>
 										<li>
 											<a href="#" class="category-label">
-												<h2>categories</h2>
+												<h2>Thể Loại máy tính</h2>
 											</a>
 											<ul class="category-items">
 												<?php foreach (Category::getAllCategory() as $key => $category): ?>

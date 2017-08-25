@@ -75,6 +75,7 @@ class Category extends \yii\db\ActiveRecord
         $category = self::find()
             ->andWhere(['status' => 0])
             ->andWhere(['deleted_at' => null])
+            ->orderBy(['id' => SORT_DESC])
             ->all();
 
         return $category;

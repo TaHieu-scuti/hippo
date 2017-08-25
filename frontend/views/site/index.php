@@ -23,11 +23,13 @@ $this->title = 'My Yii Application';
                                 </div>
                             </a>
                             <div class="product-button-list">
-                                <div class="add-to-cart-list">
-                                    <a class="btn-product btn-cart " href="javascript:void(0)">
-                                        <i aria-hidden="true" class="fa fa-shopping-cart Addcart" data-id="<?= $product->id ?>"></i>
-                                    </a>
-                                </div>
+                                <?php if (!Yii::$app->user->getIsGuest()): ?>
+                                    <div class="add-to-cart-list">
+                                        <a class="btn-product btn-cart " href="javascript:void(0)">
+                                            <i aria-hidden="true" class="fa fa-shopping-cart Addcart" data-id="<?= $product->id ?>"></i>
+                                        </a>
+                                    </div>
+                                <?php endif ?>                                
                                 <div class="product-button-group">
                                     <a class="add-to-compare" href="<?= Url::to('/product/detail?id='.$product->id ) ?>"><i class="fa fa-info" aria-hidden="true" title="Thông tin chi tiết sản phẩm"></i></a>
                                     <a href="#" title="Quick view" data-toggle="modal" data-content="<?= $product->description ?>" data-id="<?= $product->id ?>" class="btn-quickview view_product" data-target="#productModal"><i class="fa fa-search" aria-hidden="true"></i></a>
@@ -46,7 +48,11 @@ $this->title = 'My Yii Application';
                             <span class="price">
                                 <span id="price_<?= $product->id ?>" class="amount"><?= number_format($product->price) ?> VND</span>
                             </span>
-                            <button type="button" class="btn btn-danger Addcart" data-id="<?= $product->id ?>"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Thêm Vào giỏ Hàng</button>
+                            <?php if (!Yii::$app->user->getIsGuest()): ?>
+                                <button type="button" class="btn btn-danger Addcart" data-id="<?= $product->id ?>"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Thêm Vào giỏ Hàng</button>
+                            <?php else :?>
+                                <a href="<?= Url::to('/product/detail?id='.$product->id ) ?>" title="" class="btn btn-danger">Xem chi tiết</a>
+                            <?php endif ?>
                         </div>
                     </div>
                 </div>
